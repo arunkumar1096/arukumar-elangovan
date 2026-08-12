@@ -482,7 +482,7 @@ export default function MerlinAIPage() {
 
       {/* ── Launch ────────────────────────────────────────────────── */}
 
-      <Section id="launch" sectionTitle="Launch">
+      <Section id="launch" sectionTitle="Launch" chapterTitle="Launch">
         <Paragraph>
           The final product shipped inside MoEngage. Watch the full walkthrough
           of MerlinAI Copywriter in action.
