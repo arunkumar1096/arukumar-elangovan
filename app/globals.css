@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: rgba(0,0,0,.65);
+  --accent: #6366f1;
+  --accent-pill: #4c74ff;
+  --border: rgba(0,0,0,.08);
+  --surface: #F6F7F9;
+  --surface-hover: #F0F1F4;
+
+  /* Easing curves */
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* Shadow scale */
+  --shadow-flush: inset 0 0 0 1px rgba(0,0,0,.06);
+  --shadow-raised: 0 1px 2px rgba(0,0,0,.04), inset 0 0 0 1px rgba(0,0,0,.06);
+  --shadow-floating: 0 4px 24px rgba(0,0,0,.06), inset 0 0 0 1px rgba(0,0,0,.08);
+
+  /* Hairline border */
+  --border-hairline: 1px;
+
+  /* Z-index scale */
+  --z-overlay: 40;
+  --z-nav: 50;
+  --z-dropdown: 60;
+  --z-lightbox: 100;
+}
+
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+}
+
+@media (min-resolution: 192dpi) {
+  :root { --border-hairline: 0.5px; }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  h1, h2, h3 { text-wrap: balance; }
+  h1, h2 { font-family: var(--font-mackinac), serif; }
+  p { text-wrap: pretty; }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Always use a vertical scroll lane so width doesn’t change when a route has no document scroll
+     (e.g. /play). scrollbar-gutter alone is unreliable with overlay scrollbars (common on macOS). */
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.28) transparent;
+}
+
+/* WebKit: styled scrollbar encourages a non-overlay lane that actually consumes width. */
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.32);
+}
+
+body {
+  background: var(--background);
+  color: rgba(0,0,0,.8);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 450;
+  line-height: 1.45rem;
+  letter-spacing: -.005rem;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+@layer base {
+  a, button {
+    color: inherit;
+    text-decoration: none;
+  }
+  ul li::marker, ol li::marker {
+    color: rgba(0,0,0,.25);
+  }
+}
+
+/* Prevent double-tap zoom on interactive elements */
+button, a, input { touch-action: manipulation; }
+
+/* Prevent iOS Safari zoom on input focus */
+input, textarea, select { font-size: 16px; }
+
+
+/* Bento grid layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+  gap: 20px;
+}
+
+.projects-grid .col-span-1 { grid-column: span 1; }
+.projects-grid .col-span-2 { grid-column: span 2; }
+.projects-grid .row-span-1 { grid-row: span 1; }
+.projects-grid .row-span-2 { grid-row: span 2; }
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+  }
+  .projects-grid .col-span-2 { grid-column: span 2; }
+}
+
+@media (max-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 280px;
+  }
+  .projects-grid .col-span-1,
+  .projects-grid .col-span-2 { grid-column: span 1; }
+  .projects-grid .row-span-1,
+  .projects-grid .row-span-2 { grid-row: span 1; }
+}
+
+/* Lightbox animations */
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scale-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes scale-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.95); } }
+
+
+/* Hand-drawn marker highlight */
+.highlight {
+  margin: -0.04em -0.06em;
+  padding: 0.04em 0.06em;
+  border-radius: 0.25em 0.2em 0.22em 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.highlight-blue {
+  background-image: linear-gradient(82deg, rgba(56, 132, 244, 0.42), rgba(56, 132, 244, 0.12) 6%, rgba(56, 132, 244, 0.22) 93%, rgba(56, 132, 244, 0.48));
+}
+.highlight-yellow {
+  background-image: linear-gradient(82deg, rgba(242, 190, 34, 0.45), rgba(242, 190, 34, 0.12) 6%, rgba(242, 190, 34, 0.25) 93%, rgba(242, 190, 34, 0.5));
+}
+.highlight-green {
+  background-image: linear-gradient(82deg, rgba(46, 160, 110, 0.42), rgba(46, 160, 110, 0.12) 6%, rgba(46, 160, 110, 0.22) 93%, rgba(46, 160, 110, 0.48));
+}
+.highlight-purple {
+  background-image: linear-gradient(82deg, rgba(130, 68, 190, 0.42), rgba(130, 68, 190, 0.12) 6%, rgba(130, 68, 190, 0.22) 93%, rgba(130, 68, 190, 0.48));
+}
+.highlight-pink {
+  background-image: linear-gradient(82deg, rgba(214, 64, 159, 0.42), rgba(214, 64, 159, 0.12) 6%, rgba(214, 64, 159, 0.22) 93%, rgba(214, 64, 159, 0.48));
+}
+@keyframes highlight-wipe {
+  from { background-size: 0% 100%; }
+  to   { background-size: 100% 100%; }
+}
+
+/* Hover-only utilities — prevents stuck :hover on touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .card-hover { will-change: transform; }
+  .card-hover:hover > * { transform: scale(1.01); transition: transform 150ms ease; }
+  .img-hover:hover { opacity: 0.9; }
+  .btn-hover { will-change: transform; }
+  .btn-hover:hover { transform: scale(1.02); }
+  .link-hover:hover { color: rgba(0,0,0,.85); }
+  .surface-hover:hover { background-color: var(--surface); }
+}
+
+/* Active press feedback */
+.press-scale:active { transform: scale(0.97); }
+.press-scale { transition: transform 100ms ease; }
+
+/* Touch hit area — ensures 44px minimum tap target */
+.touch-hitbox {
+  position: relative;
+}
+.touch-hitbox::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+ * Play canvas animations
+ *
+ * Property ownership (avoids conflicts):
+ *   opacity + scale → play-enter (once, then releases)
+ *   translate       → play-breathe (loop)
+ *   transform       → base rotation + hover nudge (transition)
+ * ───────────────────────────────────────────────────────── */
+
+@keyframes play-enter {
+  from { opacity: 0; scale: 0.95; }
+  to   { opacity: 1; scale: 1; }
+}
+
+@keyframes play-breathe {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 var(--breathe-y, 4px); }
+}
+
+.play-item {
+  pointer-events: auto;
+  transform: rotate(var(--base-rotate, 0deg));
+  animation:
+    play-enter 0.8s ease-out var(--enter-delay, 0s) both,
+    play-breathe var(--breathe-dur, 5s) ease-in-out var(--breathe-delay, 0s) infinite;
+  transition: transform 300ms cubic-bezier(.2,.8,.3,1);
+}
+
+.play-item:hover {
+  transform: rotate(calc(var(--base-rotate, 0deg) + var(--hover-nudge, 2deg)));
+  cursor: default;
+}
+
+.play-canvas-root {
+  overscroll-behavior: none;
+}
+
+/* Pause infinite “breathe” keyframes while panning / scrolling / gliding — huge compositor win. */
+.play-canvas-root.play-canvas-moving .play-item {
+  animation-play-state: paused;
+}
+
+/* Phones: drop the looping breathe animation (iOS WebKit is easy to kill with hundreds of composited layers). */
+@media (max-width: 767px) {
+  .play-canvas-root .play-item {
+    animation:
+      play-enter 0.8s ease-out var(--enter-delay, 0s) both;
+  }
+
+  .play-canvas-root {
+    -webkit-overflow-scrolling: auto;
+  }
+
+  /* Mobile canvas scale: set in app/play/page.tsx as PLAY_COMPACT_CANVAS_SCALE (inline transform). */
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
