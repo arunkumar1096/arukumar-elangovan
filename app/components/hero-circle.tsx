@@ -512,7 +512,7 @@ export default function HeroCircle() {
       <footer
         className="absolute flex justify-between items-end pointer-events-none"
         style={{
-          inset: `auto clamp(1.1rem, 2.2vw, 2.1rem) clamp(2rem, 3vw, 3rem)`,
+          inset: `auto clamp(1.1rem, 2.2vw, 2.1rem) clamp(0.8rem, 1.2vw, 1.2rem)`,
         }}
       >
         <p

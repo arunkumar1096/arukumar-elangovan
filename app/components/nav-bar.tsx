@@ -100,7 +100,7 @@ export default function NavBar({
         borderBottom: "1px solid rgba(0,0,0,.06)",
       }}
     >
-      <div className="flex items-center justify-between py-5 px-6 lg:px-20 mx-auto">
+      <div className="flex items-center justify-between py-3 mx-auto" style={{ paddingLeft: 'clamp(1.1rem, 2.2vw, 2.1rem)', paddingRight: 'clamp(1.1rem, 2.2vw, 2.1rem)' }}>
         {/* Left: logo or back link */}
         {showBack ? (
           <Link
@@ -121,7 +121,7 @@ export default function NavBar({
           >
             <span
               ref={nameRef}
-              style={{ fontFamily: "var(--font-mackinac), serif", fontWeight: 500, letterSpacing: "-.01em" }}
+              style={{ fontFamily: "var(--font-mackinac), serif", fontWeight: 600, letterSpacing: "-.01em" }}
             >
               Arunkumar Elangovan
             </span>
@@ -145,7 +145,7 @@ export default function NavBar({
         )}
 
         {/* Right: nav items */}
-        <div className="hidden sm:flex items-center gap-4">
+        <div className="hidden sm:flex items-center gap-[8px]">
           <Link
             href="/about"
             className="text-[14px] font-[450] text-[rgba(0,0,0,.55)] link-hover hover:bg-[var(--surface)] transition-colors h-8 px-3 flex items-center rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none"
@@ -154,11 +154,11 @@ export default function NavBar({
           </Link>
           <Link
             href="/blog"
-            className="text-[14px] font-[450] text-[rgba(0,0,0,.55)] link-hover hover:bg-[var(--surface)] transition-colors h-8 px-3 flex items-center rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none"
+            className="text-[14px] font-[450] text-[rgba(0,0,0,.55)] link-hover hover:bg-[var(--surface)] transition-colors h-8 px-3 flex items-center rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none ml-[8px]"
           >
             Blog
           </Link>
-          <WorkDropdown caseStudies={caseStudies} />
+          <div className="ml-[6px]"><WorkDropdown caseStudies={caseStudies} /></div>
           <ContactDropdown />
         </div>
         {/* Mobile */}
