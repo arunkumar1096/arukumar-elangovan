@@ -100,7 +100,7 @@ export default function NavBar({
         borderBottom: "1px solid rgba(0,0,0,.06)",
       }}
     >
-      <div className="flex items-center justify-between py-3 mx-auto" style={{ paddingLeft: 'clamp(1.1rem, 2.2vw, 2.1rem)', paddingRight: 'clamp(1.1rem, 2.2vw, 2.1rem)' }}>
+      <div className="flex items-center justify-between py-4 mx-auto" style={{ paddingLeft: 'clamp(1.1rem, 2.2vw, 2.1rem)', paddingRight: 'clamp(1.1rem, 2.2vw, 2.1rem)' }}>
         {/* Left: logo or back link */}
         {showBack ? (
           <Link
@@ -121,7 +121,7 @@ export default function NavBar({
           >
             <span
               ref={nameRef}
-              style={{ fontFamily: "var(--font-mackinac), serif", fontWeight: 600, letterSpacing: "-.01em" }}
+              style={{ fontFamily: "var(--font-mackinac), serif", fontWeight: 550, letterSpacing: "-.01em" }}
             >
               Arunkumar Elangovan
             </span>

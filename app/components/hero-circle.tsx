@@ -48,6 +48,15 @@ function lerpHex(from: string, to: string, t: number) {
   return `rgb(${r} ${g} ${b})`;
 }
 
+/* ─── Circle colour stops (readable by dev tuner) ───────── */
+export const DEFAULT_CIRCLE_COLORS = {
+  c0: '#fbcbcb', // Arunkumar top
+  c1: '#B7C9F9', // Arunkumar bottom / Merlin top
+  c2: '#A9A7FF', // Merlin bottom / MoE top
+  c3: '#DBFFD3', // MoE bottom / Hippo top
+  c4: '#F1C26A', // Hippo bottom
+};
+
 /* ─── Component ──────────────────────────────────────────── */
 export default function HeroCircle() {
   const rootRef        = useRef<HTMLElement>(null);
@@ -162,17 +171,21 @@ export default function HeroCircle() {
       hippoGroup!.style.opacity       = `${Math.max(hFade, 0)}`;
       hippoGroup!.style.pointerEvents = hFade > 0.35 ? 'auto' : 'none';
 
-      // Circle gradient
-      const cStart = progress <= 1 ? lerpHex('#FFFFFF','#B7C9F9', stage1)
-                   : progress <= 2 ? lerpHex('#B7C9F9','#A9A7FF', stage2)
-                   : lerpHex('#A9A7FF','#DBFFD3', stage3);
-      const cEnd   = progress <= 1 ? lerpHex('#B7C9F9','#A9A7FF', stage1)
-                   : progress <= 2 ? lerpHex('#A9A7FF','#DBFFD3', stage2)
-                   : lerpHex('#DBFFD3','#F1C26A', stage3);
+      // Circle gradient — reads from tuner if active, else defaults
+      const CC = (typeof window !== 'undefined' && (window as any).__heroCircleColors) || DEFAULT_CIRCLE_COLORS;
+      const cStart = progress <= 1 ? lerpHex(CC.c0, CC.c1, stage1)
+                   : progress <= 2 ? lerpHex(CC.c1, CC.c2, stage2)
+                   : lerpHex(CC.c2, CC.c3, stage3);
+      const cEnd   = progress <= 1 ? lerpHex(CC.c1, CC.c2, stage1)
+                   : progress <= 2 ? lerpHex(CC.c2, CC.c3, stage2)
+                   : lerpHex(CC.c3, CC.c4, stage3);
       if (circle) {
         circle.style.background = `linear-gradient(180deg, ${cStart} 0%, ${cEnd} 100%)`;
       }
     }
+
+    /* Expose redraw for dev tuner */
+    (window as any).__heroRedraw = () => apply(st.vProgress);
 
     /* RAF tween */
     function animRAF(now: number) {
@@ -342,12 +355,13 @@ export default function HeroCircle() {
       {/* Gradient circle — bleeds up behind the sticky nav for the glass effect */}
       <div
         ref={circleRef}
+        data-circle
         className="absolute rounded-full pointer-events-none -z-10"
         style={{
           width: '100vw', height: '100vw',
           left: 0, top: '50vh',
           transform: 'translate(-50%, -50%)',
-          background: 'linear-gradient(180deg, #ffffff 0%, #B7C9F9 100%)',
+          background: 'linear-gradient(180deg, #fbcbcb 0%, #B7C9F9 100%)',
         }}
       />
 
@@ -367,31 +381,46 @@ export default function HeroCircle() {
           >
             {/* Colour square */}
             <div
-              className="aspect-square"
-              style={{ width: SQ, background: 'var(--accent)' }}
-            />
+              className="aspect-square overflow-hidden"
+              style={{ width: SQ }}
+            >
+              <img
+                src="/Card_1.png"
+                alt=""
+                style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }}
+              />
+            </div>
             {/* Name block */}
             <div
               className="absolute top-1/2 -translate-y-1/2 z-10"
               style={{ left: `calc(${SQ} * 0.5)` }}
             >
               <h1
-                className="m-0 font-light leading-[1.08] tracking-[0.03em] text-[rgba(0,0,0,.85)] whitespace-nowrap"
+                data-name-heading
+                className="m-0 text-[rgba(0,0,0,.85)] whitespace-nowrap"
                 style={{
                   fontFamily: 'var(--font-mackinac), serif',
-                  fontSize: 'clamp(3rem, 7vw, 5rem)',
+                  fontSize: '4.6rem',
+                  lineHeight: 1.16,
+                  letterSpacing: '0.005em',
+                  fontWeight: 500,
+                  fontStyle: 'italic',
                 }}
               >
                 Arunkumar<br />Elangovan
               </h1>
               <p
+                data-designer-row
                 className="m-0 flex items-center gap-1 whitespace-nowrap text-[rgba(0,0,0,.85)]"
                 style={{
                   marginTop: 'clamp(0.55rem, 1.5vw, 1.05rem)',
-                  paddingLeft: 'clamp(12.5rem, 18vw, 16rem)',
+                  marginLeft: '18rem',
                   fontFamily: 'var(--font-mackinac), serif',
-                  fontSize: 'clamp(1rem, 1.4vw, 1.35rem)',
-                  letterSpacing: '0.03em',
+                  fontSize: '1.45rem',
+                  lineHeight: 1.32,
+                  letterSpacing: '0.050em',
+                  fontWeight: 500,
+                  fontStyle: 'normal',
                 }}
               >
                 <span>-</span>
@@ -415,7 +444,9 @@ export default function HeroCircle() {
             style={{ willChange: 'transform, opacity', opacity: 0, pointerEvents: 'none' }}
           >
             <Link href="/case-study/Merlin-AI" className="block no-underline text-inherit" style={{ cursor: 'none' }}>
-              <div className="aspect-square" style={{ width: SQ, background: '#818cf8' }} />
+              <div className="aspect-square overflow-hidden" style={{ width: SQ }}>
+                <img src="/Card_2.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} />
+              </div>
               <div
                 className="absolute top-1/2 -translate-y-1/2"
                 style={{ left: `calc(${SQ} * 0.5)` }}
@@ -445,7 +476,9 @@ export default function HeroCircle() {
             className="absolute left-0 top-0"
             style={{ willChange: 'transform, opacity', opacity: 0, pointerEvents: 'none', cursor: 'none' }}
           >
-            <div className="aspect-square" style={{ width: SQ, background: '#a5b4fc' }} />
+            <div className="aspect-square overflow-hidden" style={{ width: SQ }}>
+              <img src="/Card_3.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} />
+            </div>
             <div
               className="absolute top-1/2 -translate-y-1/2"
               style={{ left: `calc(${SQ} * 0.5)` }}
@@ -457,7 +490,7 @@ export default function HeroCircle() {
                   fontSize: 'clamp(1.8rem, 4vw, 3.5rem)',
                 }}
               >
-                MoEngage - Dark mode
+                MoE - Dark mode
               </h2>
               <p className="m-0 mt-1 text-[clamp(0.7rem,1vw,0.85rem)] font-[550] tracking-[0.06em] uppercase text-[var(--muted)]">
                 MoEngage
@@ -476,12 +509,12 @@ export default function HeroCircle() {
           >
             <Link href="/case-study/video-script-editor" className="block no-underline text-inherit" style={{ cursor: 'none' }}>
               <div
-                className="aspect-square"
+                className="aspect-square overflow-hidden"
                 style={{
                   width: SQ,
-                  background: 'linear-gradient(180deg, #DBFFD3 0%, #F1C26A 100%)',
-                }}
-              />
+                }}>
+                <img src="/Card_4.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} />
+              </div>
               <div
                 className="absolute top-1/2 -translate-y-1/2"
                 style={{ left: `calc(${SQ} * 0.5)` }}
