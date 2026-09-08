@@ -85,7 +85,10 @@ const sections = [
 ];
 
 export default function MerlinAIPage() {
+  const [competitorOpen, setCompetitorOpen] = useState(false);
+
   return (
+    <>
     <CaseStudyLayout
       breadcrumb="MoEngage / MerlinAI"
       navTitle="MerlinAI Copywriter"
@@ -192,19 +195,13 @@ export default function MerlinAIPage() {
           Copy.ai, Grammarly, and OpenAI as indirect ones) across strength,
           weakness, opportunity, and threat.
         </Paragraph>
-        <Paragraph>
-          Braze places AI near message composers which feels intuitive, but the
-          experience feels like ChatGPT in the same tab, and brand guidelines
-          are hard to configure. CleverTap generates copy across emotional tones
-          but content has to be created before the campaign, making the flow
-          counterintuitive and not channel-specific. Copy.ai supports multiple
-          AI models and can pull from diverse sources, but it&apos;s not a
-          martech platform, so users have to switch tools. Grammarly excels at
-          accessibility and placement but is primarily a proofreading tool, not
-          a content creator. OpenAI is the most flexible but demands prompt
-          engineering skills most marketers don&apos;t have, and it opens in
-          another tab entirely.
-        </Paragraph>
+        <ul className="list-disc pl-5 flex flex-col gap-1.5 text-[14px] font-[450] leading-[1.45rem] tracking-[-0.005em] text-[rgba(0,0,0,.8)]">
+          <li><strong>Braze</strong> places AI near message composers which feels intuitive, but the experience feels like ChatGPT in the same tab, and brand guidelines are hard to configure.</li>
+          <li><strong>CleverTap</strong> generates copy across emotional tones but content has to be created before the campaign, making the flow counterintuitive and not channel-specific.</li>
+          <li><strong>Copy.ai</strong> supports multiple AI models and can pull from diverse sources, but it&apos;s not a martech platform, so users have to switch tools.</li>
+          <li><strong>Grammarly</strong> excels at accessibility and placement but is primarily a proofreading tool, not a content creator.</li>
+          <li><strong>OpenAI</strong> is the most flexible but demands prompt engineering skills most marketers don&apos;t have, and it opens in another tab entirely.</li>
+        </ul>
         <Paragraph>
           The opportunity:{" "}
           <Highlight color="blue">
@@ -214,6 +211,15 @@ export default function MerlinAIPage() {
           limits, and structures the prompting experience so users never have to
           think about prompt engineering.
         </Paragraph>
+        <button
+          onClick={() => setCompetitorOpen(true)}
+          className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-[var(--surface)] hover:bg-[rgba(0,0,0,.06)] transition-colors text-[13px] font-[550] tracking-[-0.005em] text-[rgba(0,0,0,.75)]"
+        >
+          View detailed analysis
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M6 12l4-4-4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       </Section>
 
       {/* ── Scope ─────────────────────────────────────────────────── */}
@@ -608,5 +614,31 @@ export default function MerlinAIPage() {
         </ul>
       </Section>
     </CaseStudyLayout>
+
+      {/* Competitor analysis modal */}
+      {competitorOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center bg-[rgba(0,0,0,.6)] backdrop-blur-sm overflow-y-auto py-8 px-4"
+          onClick={() => setCompetitorOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setCompetitorOpen(false)}
+              className="absolute -top-10 right-0 text-white/70 hover:text-white text-[13px] font-[450] flex items-center gap-1"
+            >
+              Close ✕
+            </button>
+            <img
+              src={`${IMG}/competitor.png`}
+              alt="Detailed competitor analysis"
+              className="w-full rounded-lg"
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
