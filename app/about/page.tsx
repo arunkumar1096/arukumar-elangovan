@@ -332,11 +332,6 @@ export default function AboutPage() {
       <main className="max-w-[48rem] mx-auto px-6 pt-8 sm:pt-20 pb-16">
         {/* Hero — image floated right, text fills around it */}
         <section className="pb-0 overflow-hidden">
-          <img
-            src="/images/about/me.jpg"
-            alt="Arunkumar Elangovan"
-            className="hidden sm:block float-right ml-8 mb-4 w-[38%] rounded-lg object-cover"
-          />
           <h1 className="text-[24px] sm:text-[28px] font-[600] leading-[1.3] tracking-[-0.01em] text-[rgba(0,0,0,.85)] mb-4">
             Hi, I am Arunkumar Elangovan
           </h1>
@@ -348,14 +343,6 @@ export default function AboutPage() {
           <p className="text-[14px] leading-[1.6] tracking-[-0.005em] text-[rgba(0,0,0,.8)] mb-8">
             I am a Product Designer from Chennai, India. I believe in less is more. When I am not designing, I would probably be playing a guitar or admiring a new pair of sneakers. Addicted to everything fast, loud and aesthetic.
           </p>
-          <blockquote className="border-l-2 border-[rgba(0,0,0,.12)] pl-5 mb-2">
-            <p className="text-[13px] leading-[1.75] tracking-[-0.003em] text-[rgba(0,0,0,.55)] italic">
-              &ldquo;So live your life that the fear of death can never enter your heart. Trouble no one about their religion; respect others in their view, and demand that they respect yours. Love your life, perfect your life, beautify all things in your life. Seek to make your life long and its purpose in the service of your people. Prepare a noble death song for the day when you go over the great divide. Always give a word or a sign of salute when meeting or passing a friend, even a stranger, when in a lonely place. Show respect to all people and grovel to none. When you arise in the morning give thanks for the food and for the joy of living. If you see no reason for giving thanks, the fault lies only in yourself. Abuse no one and no thing, for abuse turns the wise ones to fools and robs the spirit of its vision. When it comes your time to die, be not like those whose hearts are filled with the fear of death, so that when their time comes they weep and pray for a little more time to live their lives over again in a different way. Sing your death song and die like a hero going home.&rdquo;
-            </p>
-            <footer className="mt-3 text-[12px] text-[rgba(0,0,0,.35)]">
-              — <a href="https://en.wikipedia.org/wiki/Tecumseh" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-[rgba(0,0,0,.6)] transition-colors">Tecumseh</a>
-            </footer>
-          </blockquote>
         </section>
 
         {/* More about me */}

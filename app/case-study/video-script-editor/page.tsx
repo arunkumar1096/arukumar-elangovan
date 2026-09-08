@@ -140,7 +140,7 @@ export default function HippoVideoPage() {
         sectionTitle="Brainstorming"
         chapterTitle="The question that changed our direction."
       >
-        <Quote attribution="The design question we started with">
+        <Quote>
           How can Candice, with no video editing experience, create professional
           videos?
         </Quote>
@@ -179,7 +179,6 @@ export default function HippoVideoPage() {
       <Section
         id="how-it-works"
         sectionTitle="How It Works"
-        chapterTitle="Six steps from recording to polished video."
       >
         <ImageBlock
           src={IMGS.howItWorks}
@@ -200,7 +199,6 @@ export default function HippoVideoPage() {
       <Section
         id="sketches"
         sectionTitle="Initial Sketches"
-        chapterTitle="Pen and paper first — then reality checked by engineering."
       >
         <ImageBlock
           src={IMGS.sketches}
@@ -222,7 +220,6 @@ export default function HippoVideoPage() {
       <Section
         id="ui-design"
         sectionTitle="UI Design — Phase 1"
-        chapterTitle="An editor that feels like a document, not a timeline."
       >
         <ImageBlock
           src={IMGS.uiDesign}
@@ -268,7 +265,6 @@ export default function HippoVideoPage() {
       <Section
         id="results"
         sectionTitle="Results"
-        chapterTitle="The CEO said awesome. British Airways reported 30%."
       >
         <ImageBlock
           src={IMGS.results}
@@ -301,11 +297,8 @@ export default function HippoVideoPage() {
           more engagement in terms of watch rate and a 10% increase in CTA
           clicks.
         </Paragraph>
-        <Quote attribution="Karthi Mariappan, Founder & CEO at Hippo Video">
-          Awesome.
-        </Quote>
         <Paragraph>
-          The key takeaways: move fast and test early, don&apos;t be afraid to
+          <strong>The key takeaways:</strong> move fast and test early, don&apos;t be afraid to
           challenge the status quo, and work closely with engineers — empathy
           towards technical constraints makes for better design decisions.
         </Paragraph>
