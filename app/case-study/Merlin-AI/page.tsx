@@ -346,7 +346,6 @@ export default function MerlinAIPage() {
       <Section
         id="detailed-design"
         sectionTitle="Key Highlights"
-        chapterTitle="Key highlights from the final designs."
       >
         <PillTabs
           tabs={[
@@ -452,7 +451,6 @@ export default function MerlinAIPage() {
       <Section
         id="figma"
         sectionTitle="Detailed design"
-        chapterTitle="Detailed design + Figma."
       >
         <Paragraph>
           Explore the full interactive design file, with every screen, state, and
@@ -558,7 +556,6 @@ export default function MerlinAIPage() {
       <Section
         id="further"
         sectionTitle="Further Iterations"
-        chapterTitle="Further ideations"
       >
         <Paragraph>
           Though we were happy with the results, I noticed MerlinAI wasn&apos;t
@@ -590,7 +587,6 @@ export default function MerlinAIPage() {
       <Section
         id="what-next"
         sectionTitle="What Next"
-        chapterTitle="The roadmap ahead."
       >
         <Paragraph>
           Looking at the advantages of leveraging AI in the campaign workflow,
