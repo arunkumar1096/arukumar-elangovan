@@ -317,7 +317,7 @@ export function Section({
 }: {
   id: string;
   sectionTitle: string;
-  chapterTitle: string;
+  chapterTitle?: string;
   subtitle?: string;
   noPaddingTop?: boolean;
   children: React.ReactNode;
