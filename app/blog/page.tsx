@@ -3,6 +3,16 @@ import Link from "next/link";
 
 const posts = [
   {
+    slug: "/blog/the-best-design-system",
+    external: false,
+    title: "The Best Design System I Built Was One I Gave Away",
+    tag: "DESIGN SYSTEMS",
+    year: "2025",
+    aspect: "aspect-[4/3]",
+    image: "",
+    gradient: "linear-gradient(135deg, #e8e4ff 0%, #c7c2f5 50%, #a9a7ff 100%)",
+  },
+  {
     slug: "https://arunkumarelangovan.substack.com/p/ai-exploration-segmentation-as-a",
     external: true,
     title: "AI exploration — Segmentation as a drag and drop UI pattern",
@@ -116,12 +126,12 @@ export default function BlogPage() {
               </Link>
 
               {/* Meta row — not clickable */}
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col gap-1">
                 <p className="text-[13px] font-[450] leading-[1.5] text-[rgba(0,0,0,.8)]">
                   {post.title}
                 </p>
                 <p
-                  className="text-[10px] font-[550] tracking-[0.08em] uppercase text-[rgba(0,0,0,.35)] whitespace-nowrap pt-[2px]"
+                  className="text-[10px] font-[550] tracking-[0.08em] uppercase text-[rgba(0,0,0,.35)]"
                   style={{ fontFamily: "var(--font-geist-mono), monospace" }}
                 >
                   {post.tag}&nbsp;•&nbsp;{post.year}

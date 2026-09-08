@@ -434,16 +434,18 @@ export function Quote({
   attribution,
 }: {
   children: React.ReactNode;
-  attribution: string;
+  attribution?: string;
 }) {
   return (
     <blockquote className="my-4 pl-5 py-1" style={{ borderLeft: "1.5px solid rgba(0,0,0,.08)" }}>
       <p className="text-[14px] font-[450] leading-[1.6] italic text-[rgba(0,0,0,.65)]">
         &ldquo;{children}&rdquo;
       </p>
-      <cite className="block mt-2 text-[12px] font-[450] text-[rgba(0,0,0,.3)] not-italic">
-        — {attribution}
-      </cite>
+      {attribution && (
+        <cite className="block mt-2 text-[12px] font-[450] text-[rgba(0,0,0,.3)] not-italic">
+          — {attribution}
+        </cite>
+      )}
     </blockquote>
   );
 }

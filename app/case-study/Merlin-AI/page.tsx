@@ -121,8 +121,7 @@ export default function MerlinAIPage() {
 
       <Section
         id="brief"
-        sectionTitle="Brief @ MoEngage"
-        chapterTitle="How it all started?"
+        sectionTitle="How it started"
         noPaddingTop
       >
         <Quote attribution="Universal question across Martech platforms">
@@ -135,9 +134,9 @@ export default function MerlinAIPage() {
           at our analytics, I found three recurring problems:
         </Paragraph>
         <ul className="list-disc pl-5 flex flex-col gap-1.5 text-[14px] font-[450] leading-[1.45rem] tracking-[-0.005em] text-[rgba(0,0,0,.8)]">
-          <li>Campaigns take <strong>4–6 days</strong> to publish</li>
-          <li>Marketers get stuck at the <strong>content stage</strong>, leading to delays</li>
-          <li>Marketing teams rely on AI tools like ChatGPT and A/B testing just to finalise copy</li>
+          <li><Highlight color="blue">Campaigns take <strong>4–6 days</strong> to publish</Highlight></li>
+          <li><Highlight color="yellow">Marketers get stuck at the <strong>content stage</strong>, leading to delays</Highlight></li>
+          <li><Highlight color="green">Marketing teams rely on AI tools like ChatGPT and A/B testing just to finalise copy</Highlight></li>
         </ul>
       </Section>
 
@@ -146,7 +145,6 @@ export default function MerlinAIPage() {
       <Section
         id="research"
         sectionTitle="Primary research"
-        chapterTitle="The content bottleneck was real"
       >
         <Paragraph>
           MoEngage is a cross-channel marketing platform, but push was the most
@@ -188,7 +186,6 @@ export default function MerlinAIPage() {
       <Section
         id="competitive"
         sectionTitle="Competitor research"
-        chapterTitle="What the market was doing."
       >
         <Paragraph>
           I analysed four tools (Braze and CleverTap as direct competitors, and
@@ -224,7 +221,6 @@ export default function MerlinAIPage() {
       <Section
         id="scope"
         sectionTitle="Defining the scope"
-        chapterTitle="Defining what to build first."
       >
         <Paragraph>
           To prioritise and define the scope we used the MoSCoW method:
@@ -269,13 +265,13 @@ export default function MerlinAIPage() {
           content, it must not block the marketer from creating their campaign.
           The entire flow had to be easy to exit at any point.
         </Paragraph>
-        <Quote attribution="Design principle for this project">
+        <Quote>
           While designing a probabilistic system where outputs change based on
           real-time user inputs, I had to predict surprises and design around
           them.
         </Quote>
         <Paragraph>
-          The standard SaaS design process (James Garrett&apos;s 5-layer model)
+          The standard SaaS design process (<a href="https://www.uxdesigninstitute.com/blog/5-elements-of-ux-design/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 text-blue-600 decoration-blue-400 hover:decoration-blue-600 transition-colors">James Garrett&apos;s 5-layer model</a>)
           works well for deterministic systems. It doesn&apos;t capture the
           additional considerations needed for a probabilistic system like GenAI,
           which affect UX decisions downstream.
@@ -287,7 +283,6 @@ export default function MerlinAIPage() {
       <Section
         id="user-journey"
         sectionTitle="User Journey"
-        chapterTitle="Mapping where MerlinAI fits into the flow."
       >
         <Paragraph>
           I mapped both the current journey and the expected journey, showing
@@ -317,7 +312,6 @@ export default function MerlinAIPage() {
       <Section
         id="lo-fi"
         sectionTitle="Lo-fi Designs"
-        chapterTitle="Fill-in-the-blanks, not a blank cursor."
       >
         <Paragraph>
           In school, fill-in-the-blank questions were always easier than
@@ -482,7 +476,7 @@ export default function MerlinAIPage() {
 
       {/* ── Launch ────────────────────────────────────────────────── */}
 
-      <Section id="launch" sectionTitle="Launch" chapterTitle="Launch">
+      <Section id="launch" sectionTitle="Launch">
         <Paragraph>
           The final product shipped inside MoEngage. Watch the full walkthrough
           of MerlinAI Copywriter in action.
@@ -506,7 +500,6 @@ export default function MerlinAIPage() {
       <Section
         id="impact"
         sectionTitle="Impact & Results"
-        chapterTitle="We surpassed every success metric we defined."
       >
         <Paragraph>
           Outcomes tracked across the first quarter post-launch. We set
@@ -611,7 +604,7 @@ export default function MerlinAIPage() {
             beta.
           </li>
           <li>
-            <strong>MerlinAI for Segmentation (In development):</strong> input
+            <strong>MerlinAI for Segmentation (Live):</strong> input
             a sentence in natural language describing your segment and MerlinAI
             will automatically check the metadata of existing event attributes
             to create the exact segment.
