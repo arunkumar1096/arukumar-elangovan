@@ -90,7 +90,7 @@ export default function BlogPage() {
             Blog
           </h1>
           <p className="mt-3 text-[14px] text-[rgba(0,0,0,.45)] leading-[1.6]">
-            Writing, concepts and experiments — things that didn&apos;t fit in a case study.
+            Writing, concepts and experiments, things that didn&apos;t fit in a case study.
           </p>
         </div>
 

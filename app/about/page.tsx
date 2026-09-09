@@ -19,32 +19,43 @@ const toolkit = [
 
 const workExperience = [
   {
-    role: "Senior Product Designer",
+    role: "Founding Product Designer",
     period: "Nov 2025 – Present",
     org: "Reo.dev",
-    description:
-      "Leading design for a modern marketing stack built for developer-focused companies. Launched AI workflows across lead generation and account research, and led the design system end-to-end.",
+    bullets: [
+      "Leading design for a modern marketing stack built for developer-focused companies.",
+      "Launched AI workflows across lead generation and account research.",
+      "Led the design system end-to-end.",
+    ],
   },
   {
     role: "Senior Product Designer",
     period: "Aug 2022 – Nov 2025",
     org: "MoEngage",
-    description:
-      "Sole designer for Merlin AI suite — reduced campaign creation time by 30% and lifted engagement by up to 60%. Led the MoEngage design system, improving efficiency by 40%. Spearheaded 0-to-1 design for Personalisation and Recommendation modules.",
+    bullets: [
+      "Sole designer for Merlin AI suite — reduced campaign creation time by 30% and lifted engagement by up to 60%.",
+      "Led the MoEngage design system, improving efficiency by 40%.",
+      "Spearheaded 0-to-1 design for Personalisation and Recommendation modules.",
+    ],
   },
   {
     role: "Product Designer",
     period: "Jan 2020 – Aug 2022",
     org: "Hippo Video",
-    description:
-      "Revamped the product's information architecture, built a distributed design system that cut design and dev time by 30%, and led design for the macOS app which drove a 5% uplift in new user adoption.",
+    bullets: [
+      "Revamped the product's information architecture.",
+      "Built a distributed design system that cut design and dev time by 30%.",
+      "Led design for the macOS app which drove a 5% uplift in new user adoption.",
+    ],
   },
   {
     role: "UX/UI Designer",
     period: "Sep 2018 – Jan 2020",
     org: "CloudNow Technologies",
-    description:
-      "Designed end-to-end UX for cloud-native solutions across multiple client projects — from research and wireframes to interactive prototypes and usability testing.",
+    bullets: [
+      "Designed end-to-end UX for cloud-native solutions across multiple client projects.",
+      "From research and wireframes to interactive prototypes and usability testing.",
+    ],
   },
 ];
 
@@ -445,9 +456,11 @@ export default function AboutPage() {
 
         {/* Work Experience */}
         <section className="pt-16">
-          <div className="flex items-center gap-3 mb-6"><span className="text-[13px] font-[550] tracking-[-0.005em] text-[rgba(0,0,0,.78)] whitespace-nowrap">
-            Work Experience
-          </span><div className="flex-1 h-px bg-[rgba(0,0,0,.08)]" /></div>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-[13px] font-[550] tracking-[-0.005em] text-[rgba(0,0,0,.78)] whitespace-nowrap">Work Experience</span>
+            <span className="text-[12px] font-[450] text-[rgba(0,0,0,.35)] whitespace-nowrap">8+ years of experience</span>
+            <div className="flex-1 h-px bg-[rgba(0,0,0,.08)]" />
+          </div>
           <div className="space-y-0">
             {workExperience.map((item) => (
               <div
@@ -459,7 +472,9 @@ export default function AboutPage() {
                   <span className="block text-[12px] text-[rgba(0,0,0,.35)] mt-0.5">{item.period}</span>
                 </div>
                 <span className="text-[13px] font-[550] text-[rgba(0,0,0,.85)]">{item.org}</span>
-                <p className="text-[14px] leading-[1.5] text-[rgba(0,0,0,.8)]">{item.description}</p>
+                <ul className="list-disc pl-4 flex flex-col gap-1 text-[14px] leading-[1.5] text-[rgba(0,0,0,.8)]">
+                  {item.bullets.map((b) => <li key={b}>{b}</li>)}
+                </ul>
               </div>
             ))}
           </div>
@@ -467,30 +482,6 @@ export default function AboutPage() {
 
       </main>
 
-      {/* Footer */}
-      <footer className="px-6 lg:px-20 py-8 border-t border-[var(--border)] mx-auto">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-[12px] text-[rgba(0,0,0,.5)]">
-          <p>
-            Built with{" "}
-            <Link href="https://nextjs.org" className="link-hover transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none rounded-sm" target="_blank" rel="noopener noreferrer">Next.js</Link>
-            ,{" "}
-            <Link href="https://agentation.dev/" className="link-hover transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none rounded-sm" target="_blank" rel="noopener noreferrer">Agentation</Link>
-            {" & "}
-            <Link href="https://claude.ai/code" className="link-hover transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none rounded-sm" target="_blank" rel="noopener noreferrer">Claude Code</Link>
-          </p>
-          <div className="flex items-center gap-3">
-            <Link href="https://x.com/AndreaLobster" target="_blank" rel="noopener noreferrer" className="text-[rgba(0,0,0,.4)] hover:text-[rgba(0,0,0,.8)] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none rounded-sm" aria-label="X (Twitter)">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </Link>
-            <Link href="https://linkedin.com/in/andrea-vollendorf" target="_blank" rel="noopener noreferrer" className="text-[rgba(0,0,0,.4)] hover:text-[rgba(0,0,0,.8)] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none rounded-sm" aria-label="LinkedIn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </Link>
-            <Link href="https://github.com/andreavollendorf" target="_blank" rel="noopener noreferrer" className="text-[rgba(0,0,0,.4)] hover:text-[rgba(0,0,0,.8)] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--foreground)] outline-none rounded-sm" aria-label="GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
