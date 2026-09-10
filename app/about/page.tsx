@@ -23,9 +23,8 @@ const workExperience = [
     period: "Nov 2025 – Present",
     org: "Reo.dev",
     bullets: [
-      "Leading design for a modern marketing stack built for developer-focused companies.",
-      "Launched AI workflows across lead generation and account research.",
-      "Led the design system end-to-end.",
+      "Founding designer for a modern marketing stack built for developer-focused companies.",
+      "Designed AI workflows across lead generation and account research.",
     ],
   },
   {
@@ -33,7 +32,7 @@ const workExperience = [
     period: "Aug 2022 – Nov 2025",
     org: "MoEngage",
     bullets: [
-      "Sole designer for Merlin AI suite — reduced campaign creation time by 30% and lifted engagement by up to 60%.",
+      "Solo designer for Merlin AI suite — reduced campaign creation time by 30% and lifted engagement by up to 60%.",
       "Led the MoEngage design system, improving efficiency by 40%.",
       "Spearheaded 0-to-1 design for Personalisation and Recommendation modules.",
     ],
@@ -43,8 +42,8 @@ const workExperience = [
     period: "Jan 2020 – Aug 2022",
     org: "Hippo Video",
     bullets: [
-      "Revamped the product's information architecture.",
-      "Built a distributed design system that cut design and dev time by 30%.",
+      "Revamped information architecture of the entire product.",
+      "Built a distributed design system that reduced design and dev time by 30%.",
       "Led design for the macOS app which drove a 5% uplift in new user adoption.",
     ],
   },
