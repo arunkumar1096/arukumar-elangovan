@@ -9,8 +9,9 @@ const posts = [
     tag: "DESIGN SYSTEMS",
     year: "2025",
     aspect: "aspect-[4/3]",
-    image: "",
+    image: "/images/blog/reonblog/Reon_examples.png",
     gradient: "linear-gradient(135deg, #e8e4ff 0%, #c7c2f5 50%, #a9a7ff 100%)",
+    aspect: "aspect-[3/2]",
   },
   {
     slug: "https://arunkumarelangovan.substack.com/p/ai-exploration-segmentation-as-a",
