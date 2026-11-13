@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Agentation } from "agentation";
+import PageLoader from "./components/page-loader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -101,10 +102,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(!sessionStorage.getItem('ae_loaded')){document.body&&(document.body.style.overflow='hidden');}`,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${mackinac.variable} ${notoSerifTamil.variable} antialiased`}
       >
+        <PageLoader />
         {children}
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
